@@ -1,0 +1,24 @@
+name: Vault
+
+on:
+  workflow_dispatch:
+
+jobs:
+  retrieve-secret:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Retrieve secret from Vault
+        uses: hashicorp/vault-action@v2.4.0
+          with:
+            method: jwt
+            url: https://f2f6-185-212-61-32.ngrok-free.app
+            role: myproject-production
+            secrets: |
+                secret/data/production/aws accessKey | AWS_ACCESS_KEY_ID;
+
+      - name: Use secret from Vault
+        run: |
+          echo "${{ env.AWS_ACCESS_KEY_ID }}"

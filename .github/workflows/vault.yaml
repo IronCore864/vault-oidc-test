@@ -17,7 +17,7 @@ jobs:
           url: https://f2f6-185-212-61-32.ngrok-free.app
           role: myproject-production
           secrets: |
-            secret/data/production/aws accessKey | AWS_ACCESS_KEY_ID;
+            secret/aws accessKey | AWS_ACCESS_KEY_ID;
 
       - name: Use secret from Vault
         run: |

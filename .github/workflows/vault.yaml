@@ -11,7 +11,7 @@ jobs:
       contents: read
     steps:
       - name: Retrieve secret from Vault
-        uses: hashicorp/vault-action@v2.4.0
+        uses: hashicorp/vault-action@v2
         with:
           method: jwt
           url: https://f2f6-185-212-61-32.ngrok-free.app

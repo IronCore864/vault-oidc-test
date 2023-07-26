@@ -10,7 +10,8 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - name: Retrieve secret from Vault
+      - name: Import secret from Vault
+        id: import-secrets
         uses: hashicorp/vault-action@v2
         with:
           method: jwt
@@ -22,3 +23,4 @@ jobs:
       - name: Use secret from Vault
         run: |
           echo "${{ env.AWS_ACCESS_KEY_ID }}"
+          echo "${{ steps.import-secrets.outputs.AWS_ACCESS_KEY_ID }}"
